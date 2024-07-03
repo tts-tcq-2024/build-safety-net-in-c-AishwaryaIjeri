@@ -5,43 +5,78 @@ TEST(SoudexTestsuite, ReplacesConsonantsWithAppropriateDigits) {
  //AAA
   char soundex[5];
   generateSoundex("AX", soundex);
- // ASSERT_EQ(soundex,"A200");
+  ASSERT_EQ(soundex,"A200");
 }
-int main()
-{
-    TEST("BOOK","B200")
-     // Basic tests
-   TEST("Washington", "W252");
-    TEST("Lee", "L000");
-    TEST("Gutierrez", "G362");
-    TEST("Pfister", "P236");
-    TEST("Jackson", "J250");
 
-    // Edge cases
-    TEST("", ""); // Empty input
-    TEST("B", "B000"); // Single character input
-    TEST("Ae", "A000"); // Input with vowel
-    TEST("G.", "G000"); // Input with non-alphabetic character
+TEST(SoudexTestsuite, BasicSoundex) {
+    generateSoundex("Washington", soundex);
+    ASSERT_EQ(soundex,"W252");
+    generateSoundex("Lee", soundex);
+    ASSERT_EQ(soundex,"L000");
+    generateSoundex("Gutierrez", soundex);
+    ASSERT_EQ(soundex,"G362");
+    generateSoundex("Pfister", soundex);.
+    ASSERT_EQ(soundex,"P236");
+    generateSoundex("Jackson", soundex);
+    ASSERT_EQ(soundex,"J250");
+    generateSoundex("Tymczak",soundex);
+    ASSERT_EQ(soundex,"T522");
+    generateSoundex("Ashcraft",soundex);
+    ASSERT_EQ(soundex,"A261");
+    generateSoundex("Friedrich",soundex);
+    ASSERT_EQ(soundex,"F636");
+    generateSoundex("McClelland",soundex);
+    ASSERT_EQ(soundex,"M234");
+    generateSoundex("Schmidt",soundex);
+    ASSERT_EQ(soundex,"S530");
+}
 
-    // Variations
-    TEST("Johnson", "J525");
-    TEST("Johnston", "J525");
-    TEST("Johnsen", "J525");
-    TEST("Johns", "J520");
+TEST(SoudexTestsuite, EdgeCases) {
+    generateSoundex("",soundex);
+    ASSERT_EQ(soundex,"");
+    generateSoundex("A",soundex);
+    ASSERT_EQ(soundex,"A000");
+    generateSoundex("Aa",soundex);
+    ASSERT_EQ(soundex,"A000");
+    generateSoundex("J.",soundex);
+    ASSERT_EQ(soundex,"J000");
+}
 
-    // Handling of repeated letters
-    TEST("Leeee", "L000");
-    TEST("Bbbb", "B100");
+TEST(soundex, Variations) {
+    assertSoundex("Johnson",soundex);
+    ASSERT_EQ(soundex,"J525");
+    assertSoundex("Johnston",soundex);
+    ASSERT_EQ(soundex,"J525");
+    assertSoundex("Johnsen",soundex);
+    ASSERT_EQ(soundex,"J525");
+    assertSoundex("Johns",soundex);
+    ASSERT_EQ(soundex,"J520");
+}
 
-    // Handling of mixed case
-    TEST("Washington", "W252");
-    TEST("washington", "W252");
+TEST_F(soundex, RepeatedLetters) {
+    assertSoundex("Leeee",soundex);
+    ASSERT_EQ(soundex,"L000");
+    assertSoundex("Bbbb", soundex);
+    ASSERT_EQ(soundex,"B100");
+}
 
-    // Test longer names
-    TEST("MacDonald", "M235");
-    TEST("MacDougall", "M232");
+TEST(soundex, MixedCase) {
+    assertSoundex("Washington",soundex);
+    ASSERT_EQ(soundex,"W252");
+    assertSoundex("washington",soundex);
+    ASSERT_EQ(soundex,"W252");
+}
 
-    // Test names with hyphens
-    TEST("Smith-Jones", "S532");
-    TEST("O'Conner", "O256");
+TEST(soundex, LongerNames) {
+    assertSoundex("MacDonald",soundex);
+    ASSERT_EQ(soundex,"M235");
+    assertSoundex("MacDougall",soundex);
+    ASSERT_EQ(soundex,"M232");
+}
+
+TEST(soundex, NamesWithHyphens) {
+    assertSoundex("Smith-Jones",soundex);
+    ASSERT_EQ(soundex,"S532");
+    assertSoundex("O'Conner", soundex);
+    ASSERT_EQ(soundex,"O256");
 }
