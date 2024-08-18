@@ -53,7 +53,7 @@ TEST(soundex, Variations) {
     ASSERT_EQ(soundex,"J520");
 }
 
-TEST_F(soundex, RepeatedLetters) {
+TEST(soundex, RepeatedLetters) {
     assertSoundex("Leeee",soundex);
     ASSERT_EQ(soundex,"L000");
     assertSoundex("Bbbb", soundex);
