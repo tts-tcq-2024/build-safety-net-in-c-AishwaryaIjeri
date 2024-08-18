@@ -42,7 +42,7 @@ TEST(SoudexTestsuite, EdgeCases) {
     ASSERT_EQ(soundex,"J000");
 }
 
-TEST(soundex, Variations) {
+TEST(SoudexTestsuite, Variations) {
     assertSoundex("Johnson",soundex);
     ASSERT_EQ(soundex,"J525");
     assertSoundex("Johnston",soundex);
@@ -53,28 +53,28 @@ TEST(soundex, Variations) {
     ASSERT_EQ(soundex,"J520");
 }
 
-TEST(soundex, RepeatedLetters) {
+TEST(SoudexTestsuite, RepeatedLetters) {
     assertSoundex("Leeee",soundex);
     ASSERT_EQ(soundex,"L000");
     assertSoundex("Bbbb", soundex);
     ASSERT_EQ(soundex,"B100");
 }
 
-TEST(soundex, MixedCase) {
+TEST(SoudexTestsuite, MixedCase) {
     assertSoundex("Washington",soundex);
     ASSERT_EQ(soundex,"W252");
     assertSoundex("washington",soundex);
     ASSERT_EQ(soundex,"W252");
 }
 
-TEST(soundex, LongerNames) {
+TEST(SoudexTestsuite, LongerNames) {
     assertSoundex("MacDonald",soundex);
     ASSERT_EQ(soundex,"M235");
     assertSoundex("MacDougall",soundex);
     ASSERT_EQ(soundex,"M232");
 }
 
-TEST(soundex, NamesWithHyphens) {
+TEST(SoudexTestsuite, NamesWithHyphens) {
     assertSoundex("Smith-Jones",soundex);
     ASSERT_EQ(soundex,"S532");
     assertSoundex("O'Conner", soundex);
