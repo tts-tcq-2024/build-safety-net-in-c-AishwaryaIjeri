@@ -16,7 +16,7 @@ TEST(SoudexTestsuite, BasicSoundex) {
     ASSERT_EQ(soundex,"L000");
     generateSoundex("Gutierrez", soundex);
     ASSERT_EQ(soundex,"G362");
-    generateSoundex("Pfister", soundex);.
+    generateSoundex("Pfister", soundex);
     ASSERT_EQ(soundex,"P236");
     generateSoundex("Jackson", soundex);
     ASSERT_EQ(soundex,"J250");
