@@ -46,43 +46,44 @@ TEST(SoudexTestsuite, EdgeCases) {
 
 TEST(SoudexTestsuite, Variations) {
    char soundex[10];
-    assertSoundex("Johnson",soundex);
+    generateSoundex("Johnson",soundex);
     ASSERT_EQ(soundex,"J525");
-    assertSoundex("Johnston",soundex);
+    generateSoundex("Johnston",soundex);
     ASSERT_EQ(soundex,"J525");
-    assertSoundex("Johnsen",soundex);
+    generateSoundex("Johnsen",soundex);
     ASSERT_EQ(soundex,"J525");
-    assertSoundex("Johns",soundex);
+    generateSoundex("Johns",soundex);
     ASSERT_EQ(soundex,"J520");
 }
 
 TEST(SoudexTestsuite, RepeatedLetters) {
-    assertSoundex("Leeee",soundex);
+    char soundex[10];
+    generateSoundex("Leeee",soundex);
     ASSERT_EQ(soundex,"L000");
-    assertSoundex("Bbbb", soundex);
+    generateSoundex("Bbbb", soundex);
     ASSERT_EQ(soundex,"B100");
 }
 
-TEST(SoudexTestsuite, MixedCase) {\
+TEST(SoudexTestsuite, MixedCase) {
     char soundex[10];
-    assertSoundex("Washington",soundex);
+    generateSoundex("Washington",soundex);
     ASSERT_EQ(soundex,"W252");
-    assertSoundex("washington",soundex);
+    generateSoundex("washington",soundex);
     ASSERT_EQ(soundex,"W252");
 }
 
 TEST(SoudexTestsuite, LongerNames) {
     char soundex[10];
-    assertSoundex("MacDonald",soundex);
+    generateSoundex("MacDonald",soundex);
     ASSERT_EQ(soundex,"M235");
-    assertSoundex("MacDougall",soundex);
+    generateSoundex("MacDougall",soundex);
     ASSERT_EQ(soundex,"M232");
 }
 
 TEST(SoudexTestsuite, NamesWithHyphens) {
     char soundex[10];
-    assertSoundex("Smith-Jones",soundex);
+    generateSoundex("Smith-Jones",soundex);
     ASSERT_EQ(soundex,"S532");
-    assertSoundex("O'Conner", soundex);
+    generateSoundex("O'Conner", soundex);
     ASSERT_EQ(soundex,"O256");
 }
